@@ -14,24 +14,24 @@ for i=1:1000
     u = rand();
     u_nums(i) = u;
     
-    numbers(i) = f0(u);
+    numbers(i) = f1(u);
      
-    sign = rand();
-    if sign < 0.5
-        numbers(i) = f2(u);
-    else
-        numbers(i) = -f2(u);
-    end
-    
-    %numbers(i) = f1(u);
+%     sign = rand();
+%     if sign < 0.5
+%         numbers(i) = f2(u);
+%     else
+%         numbers(i) = -f2(u);
+%     end
+%     
+   %numbers(i) = f1(u);
     
 end
 
 
+% figure
+% plot(numbers, u_nums, "*");
 figure
-plot(numbers, u_nums, "*");
-figure
-hist(numbers)
+hist(numbers,10)
 
 median = median(numbers);
 mean = mean(numbers);

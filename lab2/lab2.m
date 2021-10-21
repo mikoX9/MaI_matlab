@@ -27,13 +27,13 @@ for i=1:1000
     end
 end
 
-figure
-plot(numbers, u_nums, ".");
+% figure
+% plot(numbers, u_nums, ".");
 % figure
 % plot(all_numbers, all_u_nums, ".");
 
 figure
-hist(numbers,100)
+hist(numbers,20)
 
 median = median(numbers);
 mean = mean(numbers);

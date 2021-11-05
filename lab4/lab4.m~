@@ -19,12 +19,13 @@ hold on;
 %%%%%%%%%%%%%%%
 
 
-S_all = [1,2,5,10,20,50];
+% Estimation of a's
+%S = 1;
+S = [1,2,3,5,10,20];
 
-mse = [];
-for S=S_all
+mse
+for s=S
     
-    % Esitmation of a's
     a_est = [];
     N = 100;
     x = [];
@@ -37,6 +38,8 @@ for S=S_all
         a_est(s) = a_est(s)/N;
 
     end
+
+
 
     % Calculate estimator of function
     y_final = [];
@@ -58,15 +61,12 @@ for S=S_all
     plot(grid,y_final);
 
     %MSE
-    mse(end+1) = 0;
-    y_tmp = 0;mm
+    mse = 0;
+    y_tmp = 0;
     for i=1:length(grid)
-        mse(end) = mse(end) + power((real_y(i)-y_final(i)), 2);
+        mse = mse + power((real_y(i)-y_final(i)), 2);
     end
-    mse(end) = mse(end)/N;
+    mse = mse/N;
 
 end
-
-figure
-plot(S_all, mse, '*-')
 

@@ -1,3 +1,4 @@
+% Non-parametric estimation of probability den-sity function
 clear all;
 close all;
 
@@ -19,7 +20,7 @@ hold on;
 %%%%%%%%%%%%%%%
 
 
-S_all = [1,2,5,10,20,50];
+S_all = [2,5,20];
 
 mse = [];
 for S=S_all
@@ -59,7 +60,7 @@ for S=S_all
 
     %MSE
     mse(end+1) = 0;
-    y_tmp = 0;mm
+    y_tmp = 0;
     for i=1:length(grid)
         mse(end) = mse(end) + power((real_y(i)-y_final(i)), 2);
     end

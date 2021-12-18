@@ -10,7 +10,7 @@ Xk = [];
 
 for i=1:N
     u = rand()+rand()-1;
-    z = 2*rand()-1;
+    z = 2*rand()-1; 
     %z = rand()/2-0.25;
     Uk(i) = miu_f(u) + z;
     Xk(i) = u;

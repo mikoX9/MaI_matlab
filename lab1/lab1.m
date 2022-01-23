@@ -1,3 +1,7 @@
+% The aim of this task was to create a random number generator that follows a chosen probability
+% Inverse Method
+
+density function (PDF).
 clear all;
 close all;
 

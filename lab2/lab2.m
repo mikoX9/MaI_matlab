@@ -1,3 +1,6 @@
+% The aim of this task was to create a random number generator that follows a chosen probability
+% Rejection Method
+
 clear all;
 close all;
 

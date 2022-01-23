@@ -2,11 +2,11 @@ clear all;
 close all;
 
 
-
 N = 100;
 y = [1];
 u = [0];
 real_gamma = [1];
+
 for i=2:N+1
     u(i) = randn();
     z = 0;
@@ -23,11 +23,14 @@ y = y(2:end);
 
 
 
-SS = [1,5,10,20];
+%SS = [1,2,5,10,20];
+SS = [1,2,5,10,20,40];
 
 deltas = [];
 
 for S = SS
+    
+    % claculate gammas
     gamma = [];
     for t=1:S 
         sum = 0;
@@ -40,7 +43,7 @@ for S = SS
     %plot(gamma);
 
 
-
+    % cumpute model
     y_est = [];
     for k=2:N
         sum = 0;
@@ -51,18 +54,18 @@ for S = SS
 
     end
 
-
-
-    plot(y);
-    hold on;
-    plot(y_est);
-    
-    legend("real", "estimation'");
+% 
+% % 
+%     plot(y);
+%     hold on;
+%     plot(y_est);
+%     legend("real", "estimation'");
     
 
 
     % use new data to system to check
     % generate test data
+    
     y_test = [1];
     u = [0];
     for i=2:N+1 
@@ -82,4 +85,6 @@ for S = SS
     
 end
 
-% plot(SS,deltas);
+plot(SS,deltas);
+
+

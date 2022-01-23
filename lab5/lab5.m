@@ -5,15 +5,15 @@ miu_f = @(x) floor(x*5);
 
 N = 100;
 Uk = [];
-Xk = [];
+Yk = [];
 
 
 for i=1:N
     u = rand()+rand()-1;
     z = 2*rand()-1; 
     %z = rand()/2-0.25;
-    Uk(i) = miu_f(u) + z;
-    Xk(i) = u;
+    Yk(i) = miu_f(u) + z;
+    Uk(i) = u;
 end
 
 grid = -1:0.01:1;
@@ -23,19 +23,22 @@ real_y = [];
 for u=grid
     real_y(end+1) = miu_f(u);
 end
-%plot(grid,real_y,'.', 'MarkerSize',20);
+plot(grid,real_y,'.', 'MarkerSize',20);
 hold on;
 %%%%%
 
 %plot(Yk,Uk,'.');
-UU = [Xk;Uk];
-%plot(UU(1,:),UU(2,:),'.')
+UU = [Uk;Yk];
+plot(UU(1,:),UU(2,:),'.')
 
 
 
 %%%%%%%%% KERNEL
 %h = 0.05;
-H = [0.01,0.02,0.05,0.1,0.2,0.4,0.8,1,1.2,1.5,2];
+%H = [0.01,0.02,0.05,0.1,0.2,0.4,0.8,1,1.2,1.5,2];
+
+H = [0.01,0.02];
+
 mse = [];
 for h=H
     new_miu = [];
@@ -50,7 +53,7 @@ for h=H
         new_miu(end+1) = sum(u_kernel)/length(u_kernel);
     end
 
-    %plot(grid,new_miu,'.');
+    plot(grid,new_miu,'.');
 
 
     %MSE
@@ -65,7 +68,7 @@ for h=H
 end
 
 
-plot(H, mse, '-');
+%plot(H, mse, '-');
 
 %%%%%%%%%%%%%%%%%%%%%%%
 
@@ -81,7 +84,7 @@ for S=S_all
     for s=1:S
         a_est(s) = 0;    
         for i=1:N
-            a_est(s) = a_est(s) + func(s, Xk(i) );
+            a_est(s) = a_est(s) + func(s, Uk(i) );
         end
         a_est(s) = a_est(s)/N;
 
@@ -92,7 +95,7 @@ for S=S_all
         b_est(s) = 0;   
 
         for i=1:N
-            b_est(s) = b_est(s) + Uk(i)*func(s, Xk(i) );
+            b_est(s) = b_est(s) + Yk(i)*func(s, Uk(i) );
         end
         b_est(s) = b_est(s)/N;
 

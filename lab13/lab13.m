@@ -131,7 +131,8 @@ end
 new_yk = new_yk(3:end);
 
 figure
-plot(yk);
+plot(yk, "-");
 hold on;
-plot(new_yk);
+plot(new_yk, "-");
+legend("output", "model output");
 
